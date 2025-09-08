@@ -1,115 +1,100 @@
 # 📸 xclip-ocr - Quick OCR from Your Screen to Clipboard
 
-![License](https://img.shields.io/github/license/rpriven/ocr-xclip)
-![Python](https://img.shields.io/badge/python-3.6%2B-blue)
-![Platform](https://img.shields.io/badge/platform-linux-lightgrey)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+![License](https://img.shields.io/github/license/rpriven/xclip-ocr?style=flat)
+![Python](https://img.shields.io/badge/python-3.6%2B-blue?style=flat)
+![Platform](https://img.shields.io/badge/platform-linux-lightgrey?style=flat)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat)
 
-**xclip-ocr** is a lightweight Linux utility that lets you quickly select any part of your screen, extract the text via OCR (using Tesseract), and copy it straight to your clipboard — all with a hotkey.
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Hotkey Setup](#hotkey-setup)
+- [Troubleshooting](#troubleshooting)
+- [File Overview](#file-overview)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
 
 ## ✨ Features
 
 - Fast screenshot-to-text via [Flameshot](https://flameshot.org/)
-- OCR powered by [Tesseract](https://github.com/tesseract-ocr/tesseract)
-- Automatically copies extracted text to your clipboard
-- Works with `xclip`, `xsel`, or (coming soon...`pyperclip`)
-- Hotkey integration via your system (e.g., Cinnamon, GNOME, etc.)
+- OCR powered by [Tesseract v5+](https://github.com/tesseract-ocr/tesseract)
+- Automatic clipboard copy (`xclip` or `xsel`)
+- Preprocessing: grayscale, denoise, contrast, threshold
+- Simple hotkey integration
 
 ---
 
-## 🛠 Installation
+## 🛠 Prerequisites
 
-### 1. Clone the repository
+- Python 3.6 or newer
+- [Flameshot](https://flameshot.org/)
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) with language data
+- `xclip` or `xsel` for clipboard
+- Ensure `~/.local/bin` is in your `$PATH`
+
+---
+
+## 🚀 Installation
 
 ```bash
 git clone https://github.com/rpriven/xclip-ocr.git
 cd xclip-ocr
-```
-
-### 2. Run the install script (this installs dependencies and makes script available system-wide)
-
-```bash
 python3 install.py
 ```
 
-Make sure you have the latest Tesseract (v5+):
-
-```bash
-tesseract --version
-```
-
-> If needed, you can add a PPA for the latest Tesseract:
-> ```bash
-> sudo add-apt-repository ppa:alex-p/tesseract-ocr-devel
-> sudo apt update && sudo apt upgrade
-> ```
-
-Make sure `~/.local/bin` is in your `$PATH`.
+> Verifies and installs system dependencies, then copies `xclip-ocr.py` to `~/.local/bin`.
 
 ---
 
 ## 🖱️ Usage
 
-Run manually:
+Run the script and select a screen region:
 
 ```bash
 xclip-ocr.py
+# Select with Flameshot, then Enter → OCR & clipboard copy
 ```
-
-You'll be prompted to select a screen region. Press 'Enter' and the text will be OCR'd and copied to your clipboard automatically.
 
 ---
 
-## ⌨️ Optional: Hotkey Setup (e.g., Cinnamon)
+## ⌨️ Hotkey Setup
 
-1. Open `Keyboard Settings` → "Custom Shortcuts"
-2. Add a new shortcut:
-   - **Name:** xclip-ocr
-   - **Command:** `python3 /home/$USER/.local/bin/xclip-ocr.py`
-   - **Shortcut:** Set your preferred key combo (e.g., `Shift + Super + T`)
-3. Save and test.
-
-> ⚠️ In some desktop environments, the hotkey might not appear until you create it manually in the GUI.
+1. **Cinnamon (auto-installed):** Super + Shift + T bound by `install.py`.
+2. **Manual (any DE):**
+   - Command: `python3 $HOME/.local/bin/xclip-ocr.py`
+   - Shortcut: your preferred key combo
 
 ---
 
 ## 🧠 Troubleshooting
 
-- **No text found?**
-  - Make sure your screenshot includes real text, not a blurry image or graphic.
-  - Ensure `tesseract-ocr` and its language files (like `eng.traineddata`) are installed.
-  - You may need to set `TESSDATA_PREFIX` if Tesseract can’t find language files (already handled by the script, just in case).
-
-- **Clipboard not working?**
-  - Ensure you have `xclip`, `xsel` or (`pyperclip`)
-  - Check that `$DISPLAY` is set if running in a graphical session.
-  - Check the logs in /tmp/xclip-ocr-error.log or /tmp/xclip-ocr-debug.log
-  - See if you are able to run `tesseract /tmp/tmp<image>.png` to extract manually, if that works it's a hotkey issue
+- **No text?** Ensure clear text, install `tesseract-ocr` and language files.
+- **Clipboard issues?** Verify `xclip`/`xsel`, check `$DISPLAY`, inspect `/tmp/xclip-ocr-debug.txt` & `error.log`.
 
 ---
 
 ## 📂 File Overview
 
-- `xclip-ocr.py` — main script
-- `install.py` — automation of setup
-- `README.md` — you're here
+| File            | Description               |
+|-----------------|---------------------------|
+| `xclip-ocr.py`  | Main OCR script           |
+| `install.py`    | Dependency & hotkey setup |
+| `README.md`     | Project documentation     |
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-- If you find any issues, please let me know so I can fix them.
-- Please feel free to help me make this work on additional distros.
+Issues & PRs: https://github.com/rpriven/xclip-ocr/issues
 
----
-
-## 💬 License
-
-MIT — free for personal and commercial use.
 
 ---
 
-## 🙌 Credits
+## 📄 License
 
-Thanks to the developers of [Tesseract OCR](https://github.com/tesseract-ocr/tesseract), [Flameshot](https://flameshot.org/), and the Linux desktop community 🐧
-
+MIT — see [LICENSE](LICENSE)
