@@ -1,0 +1,35 @@
+# Temporary files
+/tmp/*
+*.tmp
+*.temp
+
+# OCR debug and error logs
+/tmp/xclip-ocr-debug.txt
+/tmp/xclip-ocr-error.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files (auto-generated)
+*-backup-*.py
+backup/xclip-ocr-backup-*.py

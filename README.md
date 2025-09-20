@@ -22,9 +22,12 @@
 ## ✨ Features
 
 - Fast screenshot-to-text via [Flameshot](https://flameshot.org/)
-- OCR powered by [Tesseract v5+](https://github.com/tesseract-ocr/tesseract)
+- OCR powered by [Tesseract v5+](https://github.com/tesseract-ocr/tesseract) with LSTM neural engine
+- **Enhanced OCR quality** with smart preprocessing and multiple detection modes
+- **Multiple OCR attempts** using different page segmentation modes for better accuracy
+- **Smart image enhancement** that preserves text quality instead of over-processing
 - Automatic clipboard copy (`xclip` or `xsel`)
-- Preprocessing: grayscale, denoise, contrast, threshold
+- Detailed notifications with character and word count
 - Simple hotkey integration
 
 ---
